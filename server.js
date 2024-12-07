@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 const app = express();
 app.use(express.json());
 
-// Rota para criar usuário
+
 app.post("/usuarios", async (req, res) => {
   try {
     const user = await prisma.user.create({
@@ -23,7 +23,7 @@ app.post("/usuarios", async (req, res) => {
   }
 });
 
-// Rota para listar usuários
+
 app.get("/usuarios", async (req, res) => {
   try {
     const users = await prisma.user.findMany();
@@ -33,7 +33,7 @@ app.get("/usuarios", async (req, res) => {
   }
 });
 
-// Rota para atualizar usuário
+
 app.put("/usuarios/:id", async (req, res) => {
   try {
     const updatedUser = await prisma.user.update({
@@ -53,7 +53,7 @@ app.put("/usuarios/:id", async (req, res) => {
   }
 });
 
-// Rota para deletar usuário
+
 app.delete("/usuarios/:id", async (req, res) => {
   try {
     await prisma.user.delete({
@@ -68,7 +68,6 @@ app.delete("/usuarios/:id", async (req, res) => {
   }
 });
 
-// Porta definida pela variável de ambiente PORT ou 3000 como padrão
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
